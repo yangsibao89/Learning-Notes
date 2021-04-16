@@ -1,0 +1,17 @@
+netdom renamecomputer FileServer /newname:ProfileServer 		更改计算机名称为ProfileServer
+netsh interface ipv4 set address name="本地连接" source=static addr=192.168.10.212 mask= 255.255.255.0 gateway=192.168.10.1
+netsh interface ipv4 set dnsserver "本地连接" static 192.168.10.200 primary
+netdom join %computername% /domain:http://ESS.COM /userd:administrator /passwordD:a1! /REBoot:5
+
+net user ------> 本机用户列表
+net localhroup administrators ------> 本机管理员[通常含有域用户]
+net user /domain ------> 查询域用户
+net group /domain ------> 查询域里面的工作组
+net group "domain admins" /domain ------> 查询域管理员用户组
+net localgroup administrators /domain ------> 登录本机的域管理员
+net localgroup administrators workgroup\user001 /add ----->域用户添加到本机
+net group "Domain controllers" -------> 查看域控制器(如果有多台)
+ipconfig /all ------> 查询本机IP段，所在域等
+net view ------> 查询同一域内机器列表
+net view /domain ------> 查询域列表
+net view /domain:domainname -----> 查看workgroup域中计算机列表
